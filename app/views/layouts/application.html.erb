@@ -24,6 +24,14 @@
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
            <!--  nav here -->
+           <% if !logged_in? %>
+              <li><%= link_to "Sign up", new_user_path %></li>
+              <li><%= link_to "Sign in", signin_path %></li>
+            <% else %>
+              <li><%= link_to "Hello, " + " " + current_user.name, user_path(current_user) %></li>
+              <li><%= link_to "Attractions", attractions_path %></li>
+              <li><%= link_to "Log Out", logout_path, method: :post %></li>
+            <% end %>
           </ul>
         </div><!--/.nav-collapse -->
       </div>
@@ -32,6 +40,7 @@
     <!-- content -->
     <div class="container"  role="main">
       <%= yield %>
+      <%= render 'layouts/messages' %>
     </div>
 
   </body>

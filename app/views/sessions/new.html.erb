@@ -1,0 +1,19 @@
+<h2>Signin</h2>
+
+<%= form_for :user, url: signin_path do |f| %>
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.collection_select :id, User.all, :id, :name %><br>
+  </div>
+
+
+
+  <div class="field">
+    <%= f.label :password %><br />
+    <%= f.password_field :password %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Sign In" %>
+  </div>
+<% end %>
